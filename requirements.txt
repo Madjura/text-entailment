@@ -1,0 +1,9 @@
+numpy
+MySQLdb
+urllib3
+requests
+networkx
+nltk
+rdflib
+beautifulsoup4
+langdetect

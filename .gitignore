@@ -93,9 +93,9 @@ db.sqlite3
 **/*.nt
 **/*.rdf
 **/*.xml
-**/*.txt
 **/*.sql
 **/*.json
 **/migrations/
 
+eng_wikipedia_2016_1M/
 wikiextractor-master/out

@@ -1,0 +1,16 @@
+To perform the feature extraction:
+- run productsapp/import.py to import from CSV files
+- change the path to the path of the amazon reviews .csv file
+- run feature_extraction/extract.py (this will take a long time most likely)
+- import the University Of Leipzig wikipedia frequency count (eng_wikipedia_2016_1M folder)
+- in feature_extraction/scaffidi/scaffidi.py change the database settings to your database with the wikipedia frequency count
+- run feature_extraction/scaffidi/scaffidi.py to perform product feature score calculation
+
+To extend the WordNet graph:
+- update text_entailment/settings.py paths to the original graph and the location of the updated path
+- run rdf/extend_wn_graph.py
+
+To use the system:
+- install and start Indra: https://github.com/Lambda-3/IndraComposed
+- follow django deploy tutorial or use pycharm: https://docs.djangoproject.com/en/2.0/howto/deployment/
+- import the database dump to get existing data: LINK: TODO then change the settings.py file to make it use that database

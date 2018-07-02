@@ -1,0 +1,35 @@
+39.1 T: Many cellphones have built-in digital cameras.
+39.1 H: A large number of cellphones have built-in digital cameras.
+39.1 A: YES
+
+39.3 T: Many cellphones have built-in digital cameras.
+39.3 H: Many cellphones can take pictures.
+39.3 A: YES
+
+39.4 T: Many cellphones have built-in digital cameras.
+39.4 H: Many cellphones have a lens.
+39.4 A: YES
+
+39.100 T: Many cellphones have built-in digital cameras.
+39.100 H: Many cellphones have built digital cameras.
+39.100 A: NO
+
+39.101 T: Many cellphones have built-in digital cameras.
+39.101 H: Many cellphones have been built in digital cameras.
+39.101 A: NO
+
+40.2 T: One in four cellphones sold has a camera in it.
+40.2 H: Some cellphones can take pictures.
+40.2 A: YES
+
+40.100 T: One in four cellphones sold has a camera in it.
+40.100 H: Exactly one cellphone has a camera in it.
+40.100 A: NO
+
+40.101 T: One in four cellphones sold has a camera in it.
+40.101 H: Exactly four cellphones have been sold.
+40.101 A: NO
+
+40.102 T: One in four cellphones sold has a camera in it.
+40.102 H: Four cellphones have sold a camera.
+40.102 A: NO
