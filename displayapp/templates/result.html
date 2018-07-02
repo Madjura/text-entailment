@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="col-sm-12 w-100">
+        <div class="row w-100">
+            <form action="{% url 'query' %}" method="post" class="w-100">
+                {% csrf_token %}
+                {% for field in queryform.visible_fields %}
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="{{ field.auto_id }}">{{ field.label }}</label>
+                        {{ field }}
+                    </div>
+                {% endfor %}
+                {% for field in queryform.hidden_fields %}
+                    <div class="form-group row">
+                        {{ field }}
+                    </div>
+                {% endfor %}
+                <div class="for-group row">
+                    <button type="submit" class="offset-sm-1 col-sm-2 btn btn-dark" name="train">Query</button>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 w-100">
+                <ul class="nav nav-tabs" id="featuresTab" role="tablist">
+                    {% for feature in paths_features.keys %}
+                        <li class="nav-item">
+                            <a class="nav-link" id="{{ feature }}-tab" data-toggle="tab" href="#{{ feature }}" role="tab" aria-controls="home" aria-selected="false">{{ feature }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="tab-content col-sm-12 w-100" id="featuresTabContent">
+                {% for feature, v in paths_features.items %}
+
+                    <!-- tab content -->
+                    <div class="tab-pane fade" id="{{ feature }}" role="tabpanel" aria-labelledby="{{ feature }}-tab">
+                        <ul class="nav nav-tabs" id="pathsTab-{{ forloop.counter }}" role="tablist">
+                            {% for path in v.0 %}
+                                <li class="nav-item">
+                                    <a class="nav-link" id="{{ forloop.counter }}-pathTab" data-toggle="tab" href="#{{ feature }}-{{ forloop.counter }}-path" role="tab" aria-controls="home" aria-selected="false">
+                                        {% for p in path %}
+                                            {{ p }}{% if not forloop.last %}<br/>{% endif %}
+                                        {% endfor %}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        <div class="tab-content col-sm-12 w100">
+                            {% for path in v.0 %}
+                                    <div class="tab-pane fade" id="{{ feature }}-{{ forloop.counter }}-path" role="tabpanel" aria-labelledby="{{ forloop.counter }}-pathTab">
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">Product</th>
+                                                <th scope="col">Score</th>
+                                                <th scope="col">Modified Score</th>
+                                                <th scope="col">Confidence</th>
+                                                <th scope="col">Num reviews</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for productfeaturescore in v.1 %}
+                                                <tr>
+                                                    <td>{{ productfeaturescore.product.name }}</td>
+                                                    <td>{{ productfeaturescore.score }}</td>
+                                                    <td>{{ productfeaturescore.modified_score }}</td>
+                                                    <td>{{ productfeaturescore.confidence }}</td>
+                                                    <td>{{ productfeaturescore.num_reviews }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
