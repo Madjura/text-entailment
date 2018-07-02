@@ -94,7 +94,6 @@ db.sqlite3
 **/*.rdf
 **/*.xml
 **/*.sql
-**/*.json
 **/migrations/
 
 eng_wikipedia_2016_1M/
