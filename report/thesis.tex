@@ -1,0 +1,77 @@
+%%===================================
+\documentclass[12pt]{report}
+\usepackage{ramsstyle}
+\usepackage{csquotes}
+\usepackage{hyperref}
+\usepackage{svg}
+\renewcommand{\baselinestretch}{1}
+\setlength{\parindent}{1em}
+\usepackage{enumitem}
+\usepackage{sectsty}
+
+\usepackage{caption}
+\captionsetup[table]{position=bottom} 
+
+
+\setlist{nolistsep}
+\usepackage{titlesec}
+\titleformat{\chapter}[hang]
+   {\normalfont\Large\bfseries}{
+   \chaptertitlename \thechapter}{5pt}{\large}
+\titlespacing*{\chapter}{0pt}{10pt}{5pt}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{titlesec}
+
+
+\sectionfont{\fontsize{12}{15}\selectfont}
+
+\setcounter{secnumdepth}{4}
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{2.25ex plus 1ex minus .2ex}{1.0ex plus .2ex}
+
+\setcounter{chapter}{0}
+
+\hypersetup{%
+    colorlinks=True,
+    linkcolor=blue,
+    citecolor=blue}
+
+
+\let\oldcite\cite
+\renewcommand{\cite}[1]{\textbf{\oldcite{#1}}}
+
+\usepackage{etoolbox}
+\patchcmd{\chapter}{\if@openright\empty\else\empty\fi}{}{}{}
+
+\setlength{\voffset}{-0.75in}
+\setlength{\textheight}{702pt}
+
+
+%%===================================
+\begin{document}
+
+\include{front} % This is the titlepage
+\setcounter{page}{0}
+\pagenumbering{roman}
+\renewcommand{\contentsname}{Table of Contents}
+\tableofcontents
+\cleardoublepage
+\setcounter{page}{0}
+\pagenumbering{arabic}
+\include{chapter01}
+\include{chapter02}
+
+% Include more chapters as required.
+%%=========================================
+\appendix
+\include{gitrepo}
+% Include more appendices as required.
+%%=========================================
+\bibliographystyle{alpha}
+\addcontentsline{toc}{chapter}{\bibname}
+\bibliography{refs}
+%%=============================================
+\end{document}

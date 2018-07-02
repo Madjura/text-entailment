@@ -1,0 +1,37 @@
+\usepackage[utf8]{inputenc} % This defines the font-encoding you prefer to use
+\usepackage{fourier}
+\usepackage[table]{xcolor}% http://ctan.org/pkg/xcolor
+\pagestyle{headings}
+\usepackage{marvosym}
+\usepackage[pdftex]{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{rotating}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{url}
+\usepackage{natbib}
+\usepackage{svg}
+\usepackage{listings}
+\usepackage{float}
+\usepackage[export]{adjustbox}
+%\usepackage[numbers]{natbib} % Use this command if you want to refer to the literature by numbers, e.g., [1]
+\usepackage{setspace}
+\linespread{1.5}
+\setlength\parindent{0pt} % no indent
+
+\usepackage{skmath}
+
+\ExplSyntaxOn
+\RenewDocumentCommand\log{oom}{%
+  \IfNoValueTF{#1}
+    {\ensuremath{\__skmath_log:\IfNoValueTF{#2}{}{\c_math_superscript_token{#2}}\__skmath_parens:n{#3}}}
+    {\ensuremath{\__skmath_log:\c_math_subscript_token{#1}\IfNoValueTF{#2}{}{\c_math_superscript_token{#2}}\__skmath_parens:n{#3}}}%
+}
+\ExplSyntaxOff
+
+\newenvironment{remark}{\par\mbox{}\par\noindent{\bfseries \emph{Remark}\/}:\normalfont}{\par}
+\newenvironment{defin}{\par\mbox{}\par\noindent\bfseries \emph{\Pointinghand\ }\normalfont}{\par}
+\setcounter{tocdepth}{2} 
+\usepackage[colorlinks=true, pdfstartview=FitV,
+linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
+\pdfcompresslevel=9
